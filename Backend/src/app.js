@@ -2,8 +2,6 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const app = express();
 const cors = require('cors')
-const {resume, jobDescription, selfDescription} = require("./services/temp")
-const { generateInterviewReport } = require("./services/ai.service")
 const interviewRouter = require('./routes/interview.routes')
 
 app.use(express.json());

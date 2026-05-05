@@ -44,3 +44,31 @@ body,
 .neutral-color {
     color: var(--neutral);
 }
+.material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+}
+/* Target the specific class so it doesn't affect the whole page */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px; /* Width of the vertical scrollbar */
+  height: 7px;
+}
+
+/* The track (the background path of the scrollbar) */
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--neutral); /* Tailwind slate-100 */
+  border-radius: 5px;
+}
+
+/* The thumb (the draggable part) */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.434); /* Tailwind slate-300 */
+  border-radius: 5px;
+}
+
+/* Hover effect on the thumb */
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: white; /* Tailwind slate-400 */
+  cursor: grab;
+}
