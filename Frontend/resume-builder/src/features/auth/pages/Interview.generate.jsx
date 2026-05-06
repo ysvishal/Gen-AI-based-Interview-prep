@@ -50,8 +50,8 @@ const InterviewGenerate = () => {
   };
 
   return (
-    <main className="p-20">
-      <div className="flex gap-7 items p-7 justify-around min-h-100 w-full secondary-bgc shadow-lg shadow-black/25 rounded-2xl flex-col">
+    <main className="max-w-5xl mx-auto px-6 space-y-20">
+      <div className="flex gap-7 items p-7 justify-around min-h-80 w-full secondary-bgc shadow-lg shadow-black/25 rounded-2xl flex-col">
         <div className="flex flex-col gap-1">
           <h3 className="text-xs text-violet-400 font-bold">ANALYSIS ENGINE</h3>
           <h2 className="font-bold text-4xl">
