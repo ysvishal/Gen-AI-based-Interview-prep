@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
     {
         // 1. The Layout is the parent element
         // Wrapping it in <Protected> means unauthorized users can't even see the NavBars
-        element: <Layout/>, 
+        element: <Protected><Layout/></Protected>,
         
         // 2. These children will render INSIDE the <Outlet /> of your Layout.jsx
         children: [

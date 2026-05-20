@@ -21,7 +21,8 @@ const MatchScore = ({ score }) => {
   return (
     <section className="flex flex-col md:flex-row items-center justify-center gap-10 py-4">
       <div className="relative w-48 h-48 flex items-center justify-center">
-        <svg className="rotate-[-90deg] w-full h-full">
+        <div className='h-full w-full flex items-center justify-center'>
+            <svg className="rotate-[-90deg] w-full h-full">
           <circle className="text-[#2a2a2a]" cx="96" cy="96" fill="transparent" r={radius} stroke="currentColor" strokeWidth="8" />
           <motion.circle
             className="text-[#c0c1ff]"
@@ -39,7 +40,9 @@ const MatchScore = ({ score }) => {
             style={{ filter: 'drop-shadow(0 0 8px rgba(192, 193, 255, 0.6))' }}
           />
         </svg>
-        <div className=" absolute  flex flex-col items-center justify-center">
+        </div>
+        
+        <div className="absolute right-14 bottom-15 flex flex-col items-center justify-center">
             <motion.span 
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -270,7 +273,7 @@ const ActionPlan = ({ plan }) => {
 
 export default function InterviewResponse() {
   const location = useLocation();
-  const reportData = location.state
+  const reportData = location.state?.reportData;
 
   if (!reportData) {
     return (

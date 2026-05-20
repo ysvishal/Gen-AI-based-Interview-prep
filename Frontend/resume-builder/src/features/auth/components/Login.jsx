@@ -47,7 +47,7 @@ const Login = () => {
   }
 
   return (
-    <main className="flex flex-col justify-center gap-3 items-center h-screen neutral-bgc">
+    <main className="flex flex-col justify-center gap-3 items-center  h-screen neutral-bgc">
       <div className="flex flex-col secondary-bgc gap-2 rounded-lg w-80 p-10">
         <span className="primary-color inline-block font-bold text-sm">
           Craft your legacy

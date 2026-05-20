@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./Backend
+    image: vishal952005/genai-fullstack-backend:latest
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./Backend/.env
+
+  frontend:
+    build: ./Frontend/resume-builder
+    image: vishal952005/genai-fullstack-frontend:latest
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend

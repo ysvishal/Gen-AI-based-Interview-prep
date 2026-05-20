@@ -4,7 +4,7 @@ import InterviewGenerate from '../pages/Interview.generate'
 
 const Home = () => {
   return (
-    <main className='h-screen flex flex-col w-full'>
+    <main className='flex flex-col w-full'>
         <InterviewGenerate></InterviewGenerate>
     </main>
   )
