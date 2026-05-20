@@ -270,112 +270,23 @@ const ActionPlan = ({ plan }) => {
 
 export default function InterviewResponse() {
   const location = useLocation();
-  const reportData = {"matchScore": 35,
-  "technicalQuestions": [
-    {
-      "question": "The JD emphasizes distributed solutions at Amazon scale. How would you redesign your E-commerce backend using a microservices architecture to handle millions of transactions per second?",
-      "intention": "To evaluate the candidate's understanding of scalability, distributed systems, and architectural patterns beyond monolithic Django applications.",
-      "answer": "Discuss breaking the monolith into services like 'Order Service', 'Inventory Service', and 'User Service'. Explain the use of message brokers like RabbitMQ or Kafka for asynchronous communication, database sharding, and implementing caching layers with Redis."
-    },
-    {
-      "question": "Since the role involves Java and AWS, can you explain how you would manage memory and concurrency in a high-throughput Java-based food production service?",
-      "intention": "To assess proficiency in Java-specific performance tuning and concurrency models, which are critical for Amazon's backend systems.",
-      "answer": "Focus on the Java Memory Model, Garbage Collection tuning (G1 or ZGC), and using the Executor framework or Virtual Threads (Project Loom) for handling concurrent tasks efficiently without blocking the main execution thread."
-    },
-    {
-      "question": "Your project with HPE involved Confidential Computing. How would you implement zero-trust observability in a cloud-native environment like AWS?",
-      "intention": "To test the ability to apply specialized security knowledge to standard cloud infrastructure, aligning with the 'reliable distributed solutions' requirement.",
-      "answer": "Mention using AWS Nitro Enclaves for TEE, integrating with AWS CloudWatch for encrypted log streams, and using mutual TLS (mTLS) for service-to-service communication within a service mesh like Istio."
-    }
-  ],
-  "behavioralQuestions": [
-    {
-      "question": "Amazon values 'Ownership'. Can you describe a situation where you took on a task that was significantly outside your project scope because you saw it needed to be done?",
-      "intention": "To see if the candidate demonstrates initiative and responsibility for the end-to-end success of a product.",
-      "answer": "Describe a specific instance, perhaps during the SMS Organizer project, where you went beyond the initial requirements (e.g., creating the dataset yourself) to ensure the model's accuracy and reliability."
-    },
-    {
-      "question": "Tell me about a time you had to make a decision based on data but the data was incomplete. How did you proceed?",
-      "intention": "To evaluate 'Are Right, A Lot' and data-driven decision-making in ambiguous environments.",
-      "answer": "Use the STAR method to describe a technical hurdle in the Next Word Predictor project where dataset biases were found, and explain how you used heuristic testing or validation sets to mitigate risks."
-    }
-  ],
-  "skillGaps": [
-    {
-      "skill": "Professional Non-Internship Experience",
-      "severity": "high"
-    },
-    {
-      "skill": "AWS Cloud Services (EC2, S3, DynamoDB)",
-      "severity": "high"
-    },
-    {
-      "skill": "System Design and Architecture Patterns",
-      "severity": "medium"
-    },
-    {
-      "skill": "Enterprise Java Development",
-      "severity": "medium"
-    }
-  ],
-  "preparationPlan": [
-    {
-      "day": 1,
-      "focus": "Amazon Leadership Principles & STAR Method",
-      "tasks": [
-        "Map each project on the resume to at least two Amazon Leadership Principles.",
-        "Practice 'Customer Obsession' and 'Ownership' stories using the STAR format."
-      ]
-    },
-    {
-      "day": 2,
-      "focus": "Java Deep Dive & Concurrency",
-      "tasks": [
-        "Review Java Collections Framework and Multithreading.",
-        "Implement a producer-consumer pattern in Java to simulate a production line."
-      ]
-    },
-    {
-      "day": 3,
-      "focus": "Distributed Systems & System Design",
-      "tasks": [
-        "Study Scalability, Load Balancing, and CAP Theorem.",
-        "Practice designing a 'Global Food Delivery Tracker' on a whiteboard."
-      ]
-    },
-    {
-      "day": 4,
-      "focus": "AWS Core Services",
-      "tasks": [
-        "Understand the basics of AWS Lambda, SQS, and DynamoDB for serverless architectures.",
-        "Learn how to deploy a basic Flask or Java app on an EC2 instance."
-      ]
-    },
-    {
-      "day": 5,
-      "focus": "Mock Interviews & Technical Refinement",
-      "tasks": [
-        "Conduct a mock technical interview focusing on LeetCode Medium/Hard problems.",
-        "Review the HPE white paper content to explain confidential computing clearly."
-      ]
-    }
-]}
+  const reportData = location.state
 
-//   if (!reportData) {
-//     return (
-//       <div className="flex flex-col items-center justify-center text-white space-y-6 pt-20">
-//         <AlertTriangle size={48} className="text-[#c0c1ff]" />
-//         <h2 className="text-3xl font-bold font-['Manrope']">No Analysis Found</h2>
-//         <p className="text-[#c7c4d7]">Please return to the Engine to generate a new report.</p>
-//         <Link 
-//           to="/" 
-//           className="bg-[#c0c1ff] text-[#131313] hover:bg-[#a6a8ff] px-6 py-3 rounded-xl font-bold transition-colors"
-//         >
-//           Return to Engine
-//         </Link>
-//       </div>
-//     );
-//   }
+  if (!reportData) {
+    return (
+      <div className="flex flex-col items-center justify-center text-white space-y-6 pt-20">
+        <AlertTriangle size={48} className="text-[#c0c1ff]" />
+        <h2 className="text-3xl font-bold font-['Manrope']">No Analysis Found</h2>
+        <p className="text-[#c7c4d7]">Please return to the Engine to generate a new report.</p>
+        <Link 
+          to="/" 
+          className="bg-[#c0c1ff] text-[#131313] hover:bg-[#a6a8ff] px-6 py-3 rounded-xl font-bold transition-colors"
+        >
+          Return to Engine
+        </Link>
+      </div>
+    );
+  }
 
   const { matchScore, skillGaps, technicalQuestions, behavioralQuestions, preparationPlan } = reportData;
 
