@@ -4,28 +4,79 @@ trigger:
 pool:
   name: Default
 
+variables:
+  DOCKERHUB_USERNAME: vishal952005
+  BACKEND_IMAGE: genai-fullstack-backend
+  FRONTEND_IMAGE: genai-fullstack-frontend
+
 steps:
 
+# =========================
+# Install Node.js
+# =========================
 - task: NodeTool@0
   inputs:
     versionSpec: '18.x'
+  displayName: 'Install Node.js'
 
+# =========================
+# Backend Dependencies
+# =========================
 - script: |
     cd Backend
     npm install
-  displayName: Install Backend Dependencies
+  displayName: 'Install Backend Dependencies'
 
+# =========================
+# Frontend Dependencies
+# =========================
 - script: |
     cd Frontend/resume-builder
     npm install
-  displayName: Install Frontend Dependencies
+  displayName: 'Install Frontend Dependencies'
 
-- script: |
+# =========================
+# Dependency Check
+# =========================
+- powershell: |
     cd Backend
-    npm audit || exit 0
-  displayName: Dependency Check
+    npm audit
+    exit 0
+  displayName: 'Dependency Check'
 
+
+
+# =========================
+# Build Backend Docker Image
+# =========================
 - script: |
-    docker build -t backend ./Backend
-  displayName: Build Backend Docker Image
+    docker build -t $(DOCKERHUB_USERNAME)/$(BACKEND_IMAGE):latest ./Backend
+  displayName: 'Build Backend Docker Image'
 
+# =========================
+# Build Frontend Docker Image
+# =========================
+- script: |
+    docker build -t $(DOCKERHUB_USERNAME)/$(FRONTEND_IMAGE):latest ./Frontend/resume-builder
+  displayName: 'Build Frontend Docker Image'
+
+# =========================
+# Docker Login
+# =========================
+- script: |
+    docker login -u $(DOCKERHUB_USERNAME) -p $(DOCKERHUB_PASSWORD)
+  displayName: 'Docker Login'
+
+# =========================
+# Push Backend Docker Image
+# =========================
+- script: |
+    docker push $(DOCKERHUB_USERNAME)/$(BACKEND_IMAGE):latest
+  displayName: 'Push Backend Docker Image'
+
+# =========================
+# Push Frontend Docker Image
+# =========================
+- script: |
+    docker push $(DOCKERHUB_USERNAME)/$(FRONTEND_IMAGE):latest
+  displayName: 'Push Frontend Docker Image'
