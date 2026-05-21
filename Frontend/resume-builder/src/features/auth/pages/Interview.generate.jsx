@@ -2,7 +2,10 @@ import React, { useState } from "react"; // Fixed import syntax
 import FileUpload from "./DragNDrop";
 import axios from "axios";
 import { useNavigate } from "react-router";
-
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+  withCredentials: true,
+});
 const InterviewGenerate = () => {
   const [uploadedFile, setUploadedFile] = useState(null);
   const navigate = useNavigate();
@@ -33,7 +36,7 @@ const InterviewGenerate = () => {
     }
 
     try {
-    const response = await axios.post('http://localhost:3000/api/interview', formData, {
+    const response = await api.post('/api/interview', formData, {
       withCredentials: true, // This tells the browser to send the cookies!
     });
     
