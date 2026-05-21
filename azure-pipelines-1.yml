@@ -1,0 +1,30 @@
+trigger:
+- main
+
+pool:
+  name: Default
+
+steps:
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '18.x'
+
+- script: |
+    cd Backend
+    npm install
+  displayName: Install Backend Dependencies
+
+- script: |
+    cd Frontend/resume-builder
+    npm install
+  displayName: Install Frontend Dependencies
+
+- script: |
+    cd Backend
+    npm audit
+  displayName: Dependency Check
+
+- script: |
+    docker build -t backend ./Backend
+  displayName: Build Backend Docker Image
