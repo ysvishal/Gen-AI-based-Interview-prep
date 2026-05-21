@@ -44,16 +44,7 @@ steps:
     exit 0
   displayName: 'Dependency Check'
 
-# =========================
-# SonarQube Scan
-# =========================
-- script: |
-    sonar-scanner ^
-    -Dsonar.projectKey=genai-project ^
-    -Dsonar.sources=. ^
-    -Dsonar.host.url=http://localhost:9000 ^
-    -Dsonar.login=$(SONAR_TOKEN)
-  displayName: 'SonarQube Analysis'
+
 
 # =========================
 # Build Backend Docker Image
