@@ -1,0 +1,35 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '18.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    cd Backend
+    npm install
+  displayName: 'Install Backend Dependencies'
+
+- script: |
+    cd Frontend/resume-builder
+    npm install
+  displayName: 'Install Frontend Dependencies'
+
+- script: |
+    cd Backend
+    npm audit
+  displayName: 'Dependency Check'
+
+- script: |
+    docker build -t backend ./Backend
+  displayName: 'Build Backend Docker Image'
+
+- script: |
+    docker build -t frontend ./Frontend/resume-builder
+  displayName: 'Build Frontend Docker Image'
