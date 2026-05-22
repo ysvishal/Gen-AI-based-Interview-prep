@@ -1,17 +1,45 @@
 @import "tailwindcss";
 :root {
   --primary-color: #8385fd;
-  --secondary-color: #1E1E1E;
-  --neutral: #121212;
+  --primary-rgb: 131, 133, 253;
+  --secondary-color: #1e1e1e;
+  --surface: #121212;
+  --surface-rgb: 18, 18, 18;
+  --surface-strong: #1c1b1b;
+  --surface-strong-rgb: 28, 27, 27;
+  --surface-alpha: rgba(18, 18, 18, 0.95);
+  --surface-strong-alpha: rgba(28, 27, 27, 0.9);
+  --surface-muted: rgba(255, 255, 255, 0.05);
+  --on-surface: whitesmoke;
+  --on-surface-muted: #c7c4d7;
+  --surface-border: rgba(255, 255, 255, 0.1);
+  --shadow: rgba(0, 0, 0, 0.35);
   --button-sm: 0.5rem 1rem;
   --button-md: 0.75rem 1.5rem;
   --button-lg: 1rem 2rem;
 }
+[data-theme="light"] {
+  --primary-color: #4f46e5;
+  --primary-rgb: 79, 70, 229;
+  --secondary-color: #111827;
+  --surface: #ffffff;
+  --surface-rgb: 255, 255, 255;
+  --surface-strong: #f1f5f9;
+  --surface-strong-rgb: 241, 245, 249;
+  --surface-alpha: rgba(255, 255, 255, 0.95);
+  --surface-strong-alpha: rgba(241, 245, 249, 0.95);
+  --surface-muted: rgba(15, 23, 42, 0.04);
+  --on-surface: #0f172a;
+  --on-surface-muted: #475569;
+  --surface-border: rgba(15, 23, 42, 0.12);
+  --shadow: rgba(15, 23, 42, 0.12);
+}
 html,
 body,
 #root {
-  background-color: var(--neutral);
-  color: whitesmoke;
+  min-height: 100%;
+  background-color: var(--surface);
+  color: var(--on-surface);
   font-family:
     system-ui,
     -apple-system,
@@ -27,27 +55,59 @@ body,
   font-size: large;
 }
 .primary-bgc {
-    background-color: var(--primary-color);
+  background-color: var(--primary-color);
 }
 .primary-color {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 .secondary-bgc {
-    background-color: var(--secondary-color);
+  background-color: var(--secondary-color);
 }
 .secondary-color {
-    color: var(--secondary-color);
+  color: var(--secondary-color);
 }
 .neutral-bgc {
-    background-color: var(--neutral);
+  background-color: var(--neutral);
 }
 .neutral-color {
-    color: var(--neutral);
+  color: var(--neutral);
+}
+.app-shell {
+  background-color: var(--surface);
+  color: var(--on-surface);
+}
+.surface-bgc {
+  background-color: var(--surface);
+}
+.surface-strong-bgc {
+  background-color: var(--surface-strong);
+}
+.surface-muted-bgc {
+  background-color: var(--surface-muted);
+}
+.surface-border {
+  border-color: var(--surface-border);
+}
+.surface-text {
+  color: var(--on-surface);
+}
+.surface-muted-text {
+  color: var(--on-surface-muted);
+}
+.primary-text {
+  color: var(--primary-color);
+}
+.primary-bgc-soft {
+  background-color: rgba(var(--primary-rgb), 0.12);
 }
 .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            display: inline-block;
-            line-height: 1;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+  display: inline-block;
+  line-height: 1;
 }
 /* Target the specific class so it doesn't affect the whole page */
 .custom-scrollbar::-webkit-scrollbar {
